@@ -1,0 +1,11 @@
+<suite name="Suite1" verbose="1" >
+    <test name="main">
+        <classes>
+            <class name="main">
+                <methods>
+                    <include name ="Register"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
