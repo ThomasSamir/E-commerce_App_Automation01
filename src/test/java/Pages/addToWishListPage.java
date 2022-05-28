@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 public class addToWishListPage {
     public WebElement Email(@NotNull WebDriver driver) {
 
@@ -34,11 +36,15 @@ public class addToWishListPage {
 
     }
 
-    public WebElement myAccountbutton(@NotNull WebDriver driver) {
+    public WebElement myAccountButton(@NotNull WebDriver driver) {
 
         return driver.findElement(By.xpath("//a[@href=\"/customer/info\"]"));
 
 
+    }
+
+    public List<WebElement> wishListHomePage(@NotNull WebDriver driver) {
+        return driver.findElements(By.cssSelector("button[class=\"button-2 add-to-wishlist-button\"]"));
     }
 
     public static WebElement menuTap(@NotNull WebDriver driver) {
@@ -52,10 +58,16 @@ public class addToWishListPage {
     public static WebElement itemSelect(@NotNull WebDriver driver) {
         return driver.findElement(By.xpath("/html/body/div[6]/div[3]/div/div[3]/div/div[2]/div[2]/div[2]/div/div/div[1]/div/div[1]/a/img"));
     }
+
     public static WebElement itemWishlist(@NotNull WebDriver driver) {
         return driver.findElement(By.xpath("//*[@id=\"add-to-wishlist-button-14\"]"));
     }
+
     public static WebElement openWishlist(@NotNull WebDriver driver) {
         return driver.findElement(By.xpath("//a[@href=\"/wishlist\"]"));
+    }
+
+    public static WebElement selectBarNotification(@NotNull WebDriver driver) {
+        return driver.findElement(By.xpath("//*[@id=\"bar-notification\"]/div"));
     }
 }

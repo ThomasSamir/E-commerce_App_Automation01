@@ -6,48 +6,46 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 
 import static Pages.addToWishListPage.*;
 import static java.lang.Thread.sleep;
 
 public class addToWishListStepDefinition {
     addToWishListPage test;
-    Hooks driverAction = new Hooks();
-    WebDriver driver = driverAction.initializeDriver();
     registrationPage work = new registrationPage();
 
     @Then("add valid data in registration")
     public void enterValidData() throws InterruptedException {
 
-        driver.navigate().to("https://demo.nopcommerce.com/register?returnUrl=%2F");
+        Hooks.driver.navigate().to("https://demo.nopcommerce.com/register?returnUrl=%2F");
 
-        work.gender(driver).click();
+        work.gender(Hooks.driver).click();
         sleep(100);
-        work.Firstname(driver).sendKeys("Thomas");
+        work.Firstname(Hooks.driver).sendKeys("Thomas");
         sleep(100);
-        work.LastName(driver).sendKeys("Samir");
+        work.LastName(Hooks.driver).sendKeys("Samir");
         sleep(100);
-        work.birthDate(driver);
+        work.birthDate(Hooks.driver);
         sleep(100);
-        work.Email(driver).sendKeys("thomas@thomassamirsamyab.com");
+        work.Email(Hooks.driver).sendKeys("thomas@thomassamirsamyab.com");
         sleep(100);
-        work.companyName(driver).sendKeys("tCompany");
-        WebElement checkbox = work.Newsletter(driver);
+        work.companyName(Hooks.driver).sendKeys("tCompany");
+        WebElement checkbox = work.Newsletter(Hooks.driver);
         checkbox.click();
         sleep(100);
-        work.Password(driver).sendKeys("P@ssw0rd");
+        work.Password(Hooks.driver).sendKeys("P@ssw0rd");
         sleep(100);
-        work.ConfirmPassword(driver).sendKeys("P@ssw0rd");
+        work.ConfirmPassword(Hooks.driver).sendKeys("P@ssw0rd");
         sleep(100);
 
     }
 
     @And("click on  button")
     public void clickRegisterButton() throws InterruptedException {
-        work.registerButton(driver).click();
+        work.registerButton(Hooks.driver).click();
         sleep(500);
 
     }
@@ -56,7 +54,7 @@ public class addToWishListStepDefinition {
 
         test = new addToWishListPage();
 
-        test.logoutTab(driver).click();
+        test.logoutTab(Hooks.driver).click();
         sleep(1000);
 
     }
@@ -65,7 +63,7 @@ public class addToWishListStepDefinition {
 
         test = new addToWishListPage();
 
-        test.loginTab(driver).click();
+        test.loginTab(Hooks.driver).click();
         sleep(1000);
 
     }
@@ -73,18 +71,25 @@ public class addToWishListStepDefinition {
 
     @Then("login as user")
     public void enterLoginCredentials() throws InterruptedException {
-        test.Email(driver).sendKeys("thomas@thomassamirsamyab.com");
-        test.Password(driver).sendKeys("P@ssw0rd");
+        test.Email(Hooks.driver).sendKeys("thomas@thomassamirsamyab.com");
+        test.Password(Hooks.driver).sendKeys("P@ssw0rd");
         sleep(300);
-        test.loginButton(driver).click();
+        test.loginButton(Hooks.driver).click();
         sleep(500);
     }
+   /* @When("hover on tab")
+    public void wishListHomePageAction() throws InterruptedException{
+        List<WebElement> x = test.wishListHomePage(Hooks.driver);
+        x.get(0).click();
+        sleep(5000);
+    }*/
+
 
     @When("hover on tab")
     public void hoverOnTapAction() throws InterruptedException {
 
-        WebElement tab = menuTap((WebDriver) driver);
-        Actions act = new Actions((WebDriver) driver);
+        WebElement tab = menuTap(Hooks.driver);
+        Actions act = new Actions(Hooks.driver);
         act.moveToElement(tab);
         act.perform();
         sleep(500);
@@ -94,33 +99,43 @@ public class addToWishListStepDefinition {
     @And("click on category")
     public void selectCategory() throws InterruptedException {
 
-        menuItem(driver).click();
+        menuItem(Hooks.driver).click();
 
-        sleep(500);
+        sleep(1000);
 
     }
+
     @Then("click on item")
     public void selectItem() throws InterruptedException {
 
-        itemSelect(driver).click();
+        itemSelect(Hooks.driver).click();
 
-        sleep(500);
+        sleep(1000);
 
     }
     @Then("add to wishlist")
     public void addWishList() throws InterruptedException {
 
-        itemWishlist(driver).click();
+        itemWishlist(Hooks.driver).click();
 
-        sleep(500);
+        sleep(1000);
+
+    }
+    @And("assert adding to wish list")
+    public void assertAddingToWishList() throws InterruptedException {
+        sleep(2000);
+      Assert.assertTrue(selectBarNotification(Hooks.driver).isDisplayed(), "true");
+
+        sleep(3000);
 
     }
     @Given("open wish list to make sure item exist")
     public void openWishList() throws InterruptedException {
 
-        openWishlist(driver).click();
+        openWishlist(Hooks.driver).click();
         sleep(3000);
 
     }
+
 
 }

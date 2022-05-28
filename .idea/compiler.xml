@@ -7,12 +7,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="E-commerce App Automation" />
+        <module name="E-commerce_App_Automation01-master" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="E-commerce App Automation" options="--add-modules java.base,java.desktop" />
+      <module name="E-commerce_App_Automation01-master" options="--add-modules java.base" />
     </option>
   </component>
 </project>

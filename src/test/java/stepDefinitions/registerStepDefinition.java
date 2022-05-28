@@ -6,24 +6,20 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.Color;
-import org.testng.annotations.AfterTest;
 
 import static java.lang.Thread.sleep;
 
 public class registerStepDefinition {
 
     Hooks driverAction = new Hooks();
-    WebDriver driver = driverAction.initializeDriver();
     registrationPage test = null;
 
     @Given("open browser")
     public void prerequisites() throws InterruptedException {
 
-        driver.navigate().to("https://demo.nopcommerce.com/register?returnUrl=%2F");
+        Hooks.driver.navigate().to("https://demo.nopcommerce.com/register?returnUrl=%2F");
         test = new registrationPage();
     }
 
@@ -31,30 +27,30 @@ public class registerStepDefinition {
     public void enterValidData() throws InterruptedException {
 
 
-        test.gender(driver).click();
+        test.gender(Hooks.driver).click();
         sleep(100);
-        test.Firstname(driver).sendKeys("Thomas");
+        test.Firstname(Hooks.driver).sendKeys("Thomas");
         sleep(100);
-        test.LastName(driver).sendKeys("Samir");
+        test.LastName(Hooks.driver).sendKeys("Samir");
         sleep(100);
-        test.birthDate(driver);
+        test.birthDate(Hooks.driver);
         sleep(100);
-        test.Email(driver).sendKeys("thomas@thomas.com");
+        test.Email(Hooks.driver).sendKeys("thomas@thosmass.com");
         sleep(100);
-        test.companyName(driver).sendKeys("tCompany");
-        WebElement checkbox = test.Newsletter(driver);
+        test.companyName(Hooks.driver).sendKeys("tCompany");
+        WebElement checkbox = test.Newsletter(Hooks.driver);
         checkbox.click();
         sleep(100);
-        test.Password(driver).sendKeys("P@ssw0rd");
+        test.Password(Hooks.driver).sendKeys("P@ssw0rd");
         sleep(100);
-        test.ConfirmPassword(driver).sendKeys("P@ssw0rd");
+        test.ConfirmPassword(Hooks.driver).sendKeys("P@ssw0rd");
         sleep(100);
 
     }
 
     @And("click on registration button")
     public void clickRegisterButton() throws InterruptedException {
-        test.registerButton(driver).click();
+        test.registerButton(Hooks.driver).click();
         sleep(500);
 
     }
@@ -62,7 +58,7 @@ public class registerStepDefinition {
     @Then("successful registration")
     public void checkRegister() throws InterruptedException {
 
-        Assert.assertEquals("error", "Your registration completed", test.registrationSuccessfull(driver).getText());
+        Assert.assertEquals("Error this account already exists", "Your registration completed", test.registrationSuccessfull(Hooks.driver).getText());
         sleep(100);
     }
 
@@ -72,7 +68,7 @@ public class registerStepDefinition {
         Color color = null;
         color = new Color(76, 177, 124, 1);
 
-        Assert.assertEquals("errorWrongColor \n", color.asRgba(), test.messageColor(driver).getCssValue("color"));
+        Assert.assertEquals("\n errorWrongColor \n", color.asRgba(), test.registrationSuccessfull(Hooks.driver).getCssValue("color"));
         sleep(100);
 
     }

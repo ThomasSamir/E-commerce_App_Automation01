@@ -64,9 +64,9 @@ public class registrationPage {
         return driver.findElement(By.className("result"));
     }
 
-    public WebElement messageColor(@NotNull WebDriver driver) {
-
-        return driver.findElement(By.className("result"));
-    }
+//    public WebElement messageColor(@NotNull WebDriver driver) {
+//
+//        return driver.findElement(By.xpath("/html/body/div[6]/div[3]/div/div/div/div[2]/form/div[1]/ul"));
+//    }
 
 }

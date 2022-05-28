@@ -1,3 +1,4 @@
+@smoke
 Feature: logged in user can hover and select categories
 
   Background: user register then login

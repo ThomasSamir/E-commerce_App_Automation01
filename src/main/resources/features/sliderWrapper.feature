@@ -1,3 +1,4 @@
+@smoke
 Feature: user can click on slider wrapper
 
   Scenario: user can navigate between slider wrapper

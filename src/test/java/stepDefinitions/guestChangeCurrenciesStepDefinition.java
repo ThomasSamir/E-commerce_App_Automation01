@@ -4,19 +4,18 @@ package stepDefinitions;
 import Pages.changeCurrenciesPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import org.openqa.selenium.WebDriver;
+
 import static java.lang.Thread.sleep;
 
 public class guestChangeCurrenciesStepDefinition {
 
     changeCurrenciesPage test;
     Hooks driverAction = new Hooks();
-    WebDriver driver = driverAction.initializeDriver();
 
     @Given("normal User navigate")
     public void initiate() throws InterruptedException {
 
-        driver.navigate().to("https://demo.nopcommerce.com/");
+        Hooks.driver.navigate().to("https://demo.nopcommerce.com/");
         test = new changeCurrenciesPage();
 
 
@@ -30,9 +29,9 @@ public class guestChangeCurrenciesStepDefinition {
 //        sleep(5000);
 //            x.selectByValue("https://demo.nopcommerce.com/changecurrency/1?returnUrl=%2F");
 
-        test.currenciesEuro(driver).click();
+        test.currenciesEuro(Hooks.driver).click();
         sleep(3000);
-        test.currenciesDollar(driver).click();
+        test.currenciesDollar(Hooks.driver).click();
 
 
     }}

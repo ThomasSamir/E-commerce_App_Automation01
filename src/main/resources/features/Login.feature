@@ -1,3 +1,4 @@
+@smoke
 Feature: User can have the ability to login.
 
   Scenario: User login valid Data.

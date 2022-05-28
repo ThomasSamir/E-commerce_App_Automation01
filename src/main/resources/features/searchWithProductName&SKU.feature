@@ -1,3 +1,4 @@
+@smoke
 Feature: user van search for product by product name and SKU
 
   Scenario: user can search for user by product name

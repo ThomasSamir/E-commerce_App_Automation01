@@ -1,3 +1,4 @@
+@smoke
 Feature: a logged in user can have the ability to add item to cart
 
   Background: user must register first & login

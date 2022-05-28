@@ -1,3 +1,4 @@
+@smoke
 Feature: User can have the ability to register.
 
   Scenario: User register with a valid Data.

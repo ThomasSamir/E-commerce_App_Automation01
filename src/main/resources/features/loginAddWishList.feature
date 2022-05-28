@@ -1,3 +1,4 @@
+@smoke
 Feature: a logged in user can add items to wish list
 
   Background: user first must register
@@ -12,4 +13,5 @@ Scenario: user can add items to wish list
   And click on category
   Then click on item
   Then add to wishlist
+  And assert adding to wish list
   Given open wish list to make sure item exist
